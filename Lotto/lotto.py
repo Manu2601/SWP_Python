@@ -25,3 +25,4 @@ if __name__ == "__main__":
         randomNumbers = random_numbers(lottozahlen)
         update_statistics(randomNumbers, statistics)
     print(statistics)
+    
