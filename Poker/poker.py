@@ -1,7 +1,7 @@
 import random
 
 class DeckEmptyException(Exception):
-    pass
+    print("empty deck")
 
 def generate_deck():
     symbols = ['♥', '♦', '♠', '♣']
@@ -93,7 +93,14 @@ def main():
         print("Der Kartenstapel konnte nicht erstellt werden.")
         return
 
-    draws = int(input("Anzahl der Ziehungen: "))
+    while True:
+        try:
+            draws = int(input("Anzahl der Ziehungen: "))
+            if draws <= 0:
+                raise ValueError("Die Anzahl der Ziehungen muss eine positive Zahl sein.")
+            break
+        except ValueError as e:
+            print(f"Ungültige Eingabe: {e}. Bitte geben Sie eine ganze Zahl größer als 0 ein.")
     num_cards = 5
     results = simulate_draws(deck, draws, num_cards)
     probabilities = calculate_probabilities(results)
