@@ -1,8 +1,5 @@
 import random
 
-class DeckEmptyException(Exception):
-    print("empty deck")
-
 def generate_deck():
     symbols = ['♥', '♦', '♠', '♣']
     values = range(2, 15)  # Kartenwerte 2 bis 14 (Ass = 14)
@@ -87,11 +84,7 @@ def calculate_probabilities(results):
     return {hand: count / total_draws for hand, count in hand_counts.items()}
 
 def main():
-    try:
-        deck = generate_deck()
-    except DeckEmptyException:
-        print("Der Kartenstapel konnte nicht erstellt werden.")
-        return
+    deck = generate_deck()
 
     while True:
         try:
