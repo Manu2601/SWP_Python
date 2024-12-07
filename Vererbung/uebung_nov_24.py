@@ -7,6 +7,15 @@ class Employee(Person):
     def __init__(self, name, gender):
         super().__init__(name=name, gender=gender)
         
+    def __str__(self):
+        return f"{self.name} ({self.gender}) is an employee"
+    
+    def __repr__(self):
+        return (f"{type(self).__name__}"
+            f'(name="{self.name}", '
+            f'gender="{self.gender}")')
+  
+        
 class Departmentmanager(Employee):
     def __init__(self, name, gender):
         super().__init__(name=name, gender=gender)
@@ -59,6 +68,9 @@ class Company():
 
 p1 = Person("Gabriel", "male")
 e1 = Employee("David", "male")
+print(e1)
+print(repr(e1))
+
 dm1 = Departmentmanager("Manuel", "male")
 d1 = Department("IT", dm1, [e1, dm1])
 
